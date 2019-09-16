@@ -29,7 +29,7 @@ private String zipcode;	//우편번호
 private String filename;		//실제 파일명 (사용자 업로드 파일명)
 private String realfilename;	//물리 파일명 
 private String realfilename2;
-
+	
 public User() {
 	
 }

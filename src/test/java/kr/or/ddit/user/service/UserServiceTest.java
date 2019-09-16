@@ -10,31 +10,27 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
+import org.apache.commons.dbcp2.BasicDataSource;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.jdbc.datasource.init.DatabasePopulatorUtils;
+import org.springframework.jdbc.datasource.init.ResourceDatabasePopulator;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import kr.or.ddit.common.model.Page;
+import kr.or.ddit.config.test.RootTestConfig;
 import kr.or.ddit.user.model.User;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"classpath:kr/or/ddit/config/spring/context-root.xml",
-								   "classpath:kr/or/ddit/config/spring/context-datasource.xml",
-								   "classpath:kr/or/ddit/config/spring/context-transaction.xml"})
-public class UserServiceTest {
+
+public class UserServiceTest extends RootTestConfig {
 	@Resource(name="userService")
 	private IUserService userService;
 	
 	private String userId = "brownTest";
 	
-	
-	@Before
-	public void setup() {
-		//userService = new UserService();
-		userService.deleteUser(userId);
-	}
 	
 	@Test
 	public void getUserListTest() {
@@ -43,7 +39,7 @@ public class UserServiceTest {
 		/***When***/
 		List<User> userList = userService.getUserList();
 		/***Then***/
-		assertTrue(userList.size() > 105);
+		assertTrue(userList.size() > 104);
 	}
 	
 	

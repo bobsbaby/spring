@@ -9,32 +9,27 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.apache.commons.dbcp2.BasicDataSource;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.jdbc.datasource.init.DatabasePopulatorUtils;
+import org.springframework.jdbc.datasource.init.ResourceDatabasePopulator;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import kr.or.ddit.common.model.Page;
+import kr.or.ddit.config.test.RootTestConfig;
 import kr.or.ddit.user.model.User;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"classpath:kr/or/ddit/config/spring/context-root.xml",
-								   "classpath:kr/or/ddit/config/spring/context-datasource.xml",
-								   "classpath:kr/or/ddit/config/spring/context-transaction.xml"})
-
-public class UserDaoTest {
+public class UserDaoTest extends RootTestConfig{
 	//userDao를 테스트 하기 위해 필요한 것
 	//db 연결, 트랜잭션, dao
 	@Resource(name="userDao")
 	private IUSerDao userDao;
 	
 	private String userId = "brownTest";
-	
-	@Before
-	public void setup() {
-		userDao.deleteUser(userId);
-	}
 	
 	@Test
 	public void getUserListTest() {
@@ -43,7 +38,7 @@ public class UserDaoTest {
 		/***When***/
 		List<User> userList = userDao.getUserList();
 		/***Then***/
-		assertTrue(userList.size() > 105);
+		assertTrue(userList.size() > 104);
 	}
 	
 	@Test
@@ -109,7 +104,7 @@ public class UserDaoTest {
 		/***When***/
 		int totalCnt = userDao.getUserTotalCnt();
 		/***Then***/
-		assertEquals(106, totalCnt);
+		assertEquals(105, totalCnt);
 	}
 	
 	/**
