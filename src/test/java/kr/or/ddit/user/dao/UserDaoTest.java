@@ -9,15 +9,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
-import org.apache.commons.dbcp2.BasicDataSource;
-import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.jdbc.datasource.init.DatabasePopulatorUtils;
-import org.springframework.jdbc.datasource.init.ResourceDatabasePopulator;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import kr.or.ddit.common.model.Page;
 import kr.or.ddit.config.test.RootTestConfig;
