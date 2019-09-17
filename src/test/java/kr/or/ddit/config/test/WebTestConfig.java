@@ -1,5 +1,7 @@
 package kr.or.ddit.config.test;
 
+import javax.annotation.Resource;
+
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -12,8 +14,13 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
+import kr.or.ddit.user.service.IUserService;
+
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration("classpath:kr/or/ddit/config/spring/servlet-context.xml")	//controller scan : servlet-context.xml
+@ContextConfiguration(locations = {"classpath:kr/or/ddit/config/spring/servlet-context.xml", 
+									"classpath:kr/or/ddit/config/spring/context-root.xml",
+									"classpath:kr/or/ddit/config/spring/context-datasource-test.xml",
+									"classpath:kr/or/ddit/config/spring/context-transaction.xml"})	//controller scan : servlet-context.xml
 @WebAppConfiguration		//스프링 컨테이너를 구성할 web 기반 application context로 구성 	
 public class WebTestConfig {
 	
