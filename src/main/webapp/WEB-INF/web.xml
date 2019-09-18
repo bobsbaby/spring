@@ -1,23 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" version="3.0">
-  <display-name>spring</display-name>
-  <welcome-file-list>
-    <welcome-file>index.html</welcome-file>
-    <welcome-file>index.htm</welcome-file>
-    <welcome-file>index.jsp</welcome-file>
-    <welcome-file>default.html</welcome-file>
-    <welcome-file>default.htm</welcome-file>
-    <welcome-file>default.jsp</welcome-file>
-  </welcome-file-list>
-  
-  <!-- spring root container (service, dao) -->
-  <!-- needed for ContextLoaderListener -->
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	version="3.0">
+	<display-name>spring</display-name>
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.htm</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>default.html</welcome-file>
+		<welcome-file>default.htm</welcome-file>
+		<welcome-file>default.jsp</welcome-file>
+	</welcome-file-list>
+
+	<!-- spring root container (service, dao) -->
+	<!-- needed for ContextLoaderListener -->
 	<context-param>
-		<!-- 초기화 파라미터 이름은 스프링 크레인워크에서 contextConfigLocation 으로 고정  -->
+		<!-- 초기화 파라미터 이름은 스프링 크레인워크에서 contextConfigLocation 으로 고정 -->
 		<param-name>contextConfigLocation</param-name>
-		
-		<!-- 스프링 프레임워크 사용자가 설정할 코드는 설정파일 위치 뿐이다 
-			 여러개의 설정파일로 구성 가능 (, 혹은 줄바꿈)-->
+
+		<!-- 스프링 프레임워크 사용자가 설정할 코드는 설정파일 위치 뿐이다 여러개의 설정파일로 구성 가능 (, 혹은 줄바꿈) -->
 		<param-value>classpath:kr/or/ddit/config/spring/context-root.xml
 					classpath:kr/or/ddit/config/spring/context-datasource.xml
 					classpath:kr/or/ddit/config/spring/context-transaction.xml</param-value>
@@ -27,18 +29,19 @@
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
-  	
-  	<!-- context path 설정 : 서버 기동시 application scope에 cp 라는 속성에 컨택스트 패스 값을 넣어준다.  -->
-  	<listener>
-  	<listener-class>kr.or.ddit.listner.ContextPathInitListener</listener-class>
-  	</listener>
-  	
-	<!-- The front controller of this Spring Web application, responsible for handling all application requests -->
+
+	<!-- context path 설정 : 서버 기동시 application scope에 cp 라는 속성에 컨택스트 패스 값을 넣어준다. -->
+	<listener>
+		<listener-class>kr.or.ddit.listner.ContextPathInitListener</listener-class>
+	</listener>
+
+	<!-- The front controller of this Spring Web application, responsible for 
+		handling all application requests -->
 	<servlet>
 		<servlet-name>springDispatcherServlet</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
 		<init-param>
-			<!-- 초기화 파라미터 이름은 스프링 크레인워크에서 contextConfigLocation 으로 고정  -->
+			<!-- 초기화 파라미터 이름은 스프링 크레인워크에서 contextConfigLocation 으로 고정 -->
 			<param-name>contextConfigLocation</param-name>
 			<param-value>classpath:kr/or/ddit/config/spring/servlet-context.xml</param-value>
 		</init-param>
@@ -48,12 +51,10 @@
 	<!-- Map all requests to the DispatcherServlet for handling -->
 	<servlet-mapping>
 		<servlet-name>springDispatcherServlet</servlet-name>
-		<!-- /* : 디스패처 서블릿이 모든 요청을 받는다 
-			 / : 디폴트 서블릿
-		-->
+		<!-- /* : 디스패처 서블릿이 모든 요청을 받는다 / : 디폴트 서블릿 -->
 		<url-pattern>/</url-pattern>
-	</servlet-mapping>  
-	
+	</servlet-mapping>
+
 	<!-- character Encoding filter -->
 	<filter>
 		<filter-name>characterEncodingFilter</filter-name>
@@ -63,8 +64,20 @@
 			<param-value>UTF-8</param-value>
 		</init-param>
 	</filter>
-		<filter-mapping>
-			<filter-name>characterEncodingFilter</filter-name>
-			<url-pattern>/*</url-pattern>
-		</filter-mapping>
+	<filter-mapping>
+		<filter-name>characterEncodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<!-- error page -->
+	<error-page>
+		<error-code>404</error-code>
+		<location>/error/404/404.jsp</location>
+	</error-page>
+
+	<error-page>
+		<error-code>500</error-code>
+		<location>/error/500/500.html</location>
+	</error-page>
+
 </web-app>
