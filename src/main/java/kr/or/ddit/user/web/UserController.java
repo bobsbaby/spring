@@ -9,6 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -66,7 +67,7 @@ public class UserController {
 		
 		return "user/userListOnlyHalf";
 	}
-	
+//	@GetMapping("userList")
 	@RequestMapping(path="userPagingList", method = RequestMethod.GET)
 //	public String userPagingList(Page page, Model model) {
 	public String userPagingList(@RequestParam(name = "page", defaultValue = "1") int p, @RequestParam(defaultValue = "10") int pagesize, Model model) {
