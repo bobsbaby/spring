@@ -119,7 +119,7 @@ public class UserControllerTest extends WebTestConfig{
 													.file(file)
 													.param("userId", "brown")
 													.param("userNm", "브라운테스트")
-													.param("pass", "brownTest1234")
+													.param("pass", "brown1234")
 													.param("reg_dt", "2019-08-08")
 													.param("alias", "곰테스트")
 													.param("Zipcode", "34940")

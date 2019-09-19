@@ -53,16 +53,13 @@ public class LoginController {
 			return "login/login"; 	//view();
 		}
 		else if (user.checkLoginValidate(userId, pass)) {
-			session.setAttribute("S_USERVO)", user);
+			session.setAttribute("S_USERVO", user);
 			return "main";
 		}
 		else {
 			return "login/login";
 		}
 	}
-	
-
-	
 	
 	private void manageUserIdCookie(HttpServletResponse response, String userId, String rememberMe) {
 		//rememberMe 파라미터가 존재할 경우 userId를 cookie로 생성 
