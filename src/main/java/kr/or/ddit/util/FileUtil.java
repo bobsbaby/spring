@@ -16,7 +16,7 @@ public class FileUtil {
 		String uuidFileName = UUID.randomUUID().toString();
 		String extName = getExtension(originalFileName);
 		File file = new File(path + "\\" + uuidFileName + extName);
-
+		
 		FileInfo fileInfo = new FileInfo(file, extName, originalFileName);
 
 		return fileInfo;

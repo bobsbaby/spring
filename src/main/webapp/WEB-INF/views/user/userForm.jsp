@@ -5,6 +5,7 @@
 	pageEncoding="UTF-8"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -78,7 +79,7 @@
 
 			</div>
 			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-				<form class="form-horizontal" id = "frm" role="form" action="${cp }/UserUpdate"
+				<form class="form-horizontal" id = "frm" role="form" action="${cp }/user/userForm"
 					method="post" enctype="multipart/form-data">
 
 					
@@ -95,7 +96,8 @@
 						<div class="col-sm-10">
 							<input type="text" class="form-control" id="userId" name="userId"
 								placeholder="사용자 아이디" value = "${param.userId}">
-								${userIdMsg }
+								<font color = "red"> <form:errors path = "user.userId"/></font>
+							
 						</div>
 					</div>
 

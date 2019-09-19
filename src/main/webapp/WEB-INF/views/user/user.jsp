@@ -37,18 +37,17 @@
 
          <div class="col-sm-3 col-md-2 sidebar">
             <!-- left -->
-            <%@ include file="/WEB-INF/views/commonJsp/left.jsp" %>
          </div>
          <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 
-            <form class="form-horizontal" role="form"  id = "frm" action="${cp }/UserUpdate"
+            <form class="form-horizontal" role="form"  id = "frm" action="${cp }/user/userUpdate"
 					method="get" enctype="multipart/form-data" >
             <input type = "hidden" name ="userId" value = "${user.userId }"/>
             <div class="form-group">
                   <label for="userNm" class="col-sm-2 control-label">사용자 사진</label>
                   <div class="col-sm-10">
 <%--                   <img src = "${cp }${user.realfilename2 }"/> --%>
-				   	   <img src = "${cp }/userPicture?userId=${user.userId}"/>
+				   	   <img src = "${cp }/user/userPicture?userId=${user.userId}"/>
                   </div>
                </div>
 

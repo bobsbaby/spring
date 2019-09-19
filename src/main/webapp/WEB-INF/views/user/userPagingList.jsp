@@ -51,7 +51,7 @@
 </script>
 </head>
 <body>
-	<form id="frm" action="${cp }/user" method="get">
+	<form id="frm" action="${cp }/user/user" method="get">
 		<input type="hidden" id="userId" name="userId" />
 	</form>
 	<!-- header -->
@@ -93,7 +93,7 @@
 								</c:forEach>
 							</table>
 						</div>
-						<br> <a href = "${cp }/userForm" class="btn btn-default center">사용자 등록</a>
+						<br> <a href = "${cp }/user/userForm" class="btn btn-default center">사용자 등록</a>
 
 						<div class="text-center">
 							<ul class="pagination">

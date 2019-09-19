@@ -61,7 +61,7 @@
 
 			</div>
 			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-				<form class="form-horizontal" id = "frm" role="form" action="${cp }/UserUpdate"
+				<form class="form-horizontal" id = "frm" role="form" action="${cp }/user/userUpdate"
 					method="post" enctype="multipart/form-data">
 
 					
@@ -70,7 +70,7 @@
 						<div class="col-sm-10">
 							<input type="file" class="form-control" id="picture" name="picture"
 								placeholder="사용자 사진">
-								<img src = "${cp }/userPicture?userId=${user.userId}"/>
+								<img src = "${cp }/user/userPicture?userId=${user.userId}"/>
 						</div>
 					</div>
 					
