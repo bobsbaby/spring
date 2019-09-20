@@ -247,6 +247,39 @@ public class UserController {
 
 	}
 	
+	@RequestMapping(path="userPagingListAjax", method = RequestMethod.GET)
+	public String userPagingListAjax(@RequestParam(name = "page", defaultValue = "1") int p, @RequestParam(defaultValue = "10") int pagesize, Model model) {
+		Page page = new Page(p, pagesize);
+
+
+		model.addAttribute("pageVo", page);
+		
+		
+		Map<String, Object> resultMap = userService.getUserPagingList(page);
+		model.addAllAttributes(resultMap);
+
+		return "jsonView";
+	}
+	
+	@RequestMapping(path = "userPagingListAjaxView")
+	public String userPagingListAjaxView() {
+		return "user/userPagingListAjaxView";
+	}
+	
+	
+	@RequestMapping(path="userPagingListHtmlAjax", method = RequestMethod.GET)
+	public String userPagingListHtmlAjax(@RequestParam(defaultValue = "1") int p,
+					@RequestParam(defaultValue = "10") int pagesize, Model model) {
+		Page page = new Page(p, pagesize);
+
+		model.addAttribute("pageVo", page);
+		
+		
+		Map<String, Object> resultMap = userService.getUserPagingList(page);
+		model.addAllAttributes(resultMap);
+
+		return "user/userPagingListHtmlAjax";
+	}
 	
 }
 
